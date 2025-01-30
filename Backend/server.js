@@ -18,13 +18,18 @@ connectDB();
 connectCloudinary();
 
 
+// CORS Middleware Configuration
+const corsOptions = {
+    origin: process.env.FRONTEND_URL, // Allow only this frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    credentials: true, // Allow cookies if needed
+};
+
+
+
 // Middlewares
 app.use(express.json());
-app.use(cors({
-    origin: process.env.FRONTEND_URL,  // Allow only your frontend domain
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true  // if you need to send cookies
-}));
+app.use(cors(corsOptions));
 
 
 
