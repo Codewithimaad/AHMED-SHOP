@@ -12,7 +12,7 @@ import { IoSearch, IoBagOutline } from "react-icons/io5";
 const Navbar = () => {
 
     const [visible, setVisible] = useState(false);
-    const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext)
+    const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems, user } = useContext(ShopContext)
 
     const logOut = () => {
         navigate('/login')
@@ -27,7 +27,7 @@ const Navbar = () => {
         <div className='flex items-center justify-between py-8 font-medium'>
             <div className='flex'>
                 <Link to='/'>
-                    <h1 className='text-base sm:text-2xl prata-regular'>
+                    <h1 className='text-sm sm:text-2xl prata-regular'>
                         AHMED
                         <span className='text-blue-500 font-medium prata-regular'>
                             SHOP
@@ -68,7 +68,20 @@ const Navbar = () => {
             <div className='flex items-center gap-6'>
                 <p onClick={() => setShowSearch(true)} className='text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><IoSearch /></p>
                 <div className='group relative'>
-                    <p onClick={() => token ? null : navigate('/login')} className='text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><FaUser /></p>
+                    <p
+                        onClick={() => token ? null : navigate('/login')}
+                        className="text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600"
+                    >
+                        {token && user ? (
+                            <span className="flex items-center justify-center w-8 h-8 bg-black text-white rounded-full text-sm border border-gray-300 font-semibold">
+                                {user.name[0].toUpperCase()}
+                            </span>
+                        ) : (
+                            <FaUser />
+                        )}
+                    </p>
+
+
 
                     {/* Dropdown Menu */}
                     {token &&
