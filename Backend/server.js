@@ -18,6 +18,10 @@ connectDB();
 connectCloudinary();
 
 
+console.log(process.env.FRONTEND_URL);
+
+
+
 // CORS Middleware Configuration
 const corsOptions = {
     origin: process.env.FRONTEND_URL, // Allow only this frontend URL

@@ -38,6 +38,26 @@ const loginUser = async (req, res) => {
 }
 
 
+const getUser = async (req, res) => {
+    try {
+        const { userId } = req.body; // Extract user ID from the token (decoded in middleware)
+
+        // Fetch user from database, excluding password for security
+        const user = await userModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        res.json({ success: true, user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
+
 //Route for userRegistration
 const registerUser = async (req, res) => {
 
@@ -87,6 +107,9 @@ const registerUser = async (req, res) => {
 }
 
 
+
+
+
 // Route for Admin Login
 const adminLogin = async (req, res) => {
     try {
@@ -105,4 +128,4 @@ const adminLogin = async (req, res) => {
 
 
 
-export { loginUser, registerUser, adminLogin }
+export { loginUser, registerUser, adminLogin, getUser }
