@@ -129,7 +129,7 @@ const Cart = () => {
             </div>
         </div>
     ) : (
-        <div className="w-full max-w-lg lg:max-w-sm mx-auto text-center p-5">
+        <div className="w-full max-w-lg lg:max-w-sm mx-auto text-center p-5 mt-10">
             {/* Empty Cart Icon */}
             <div className="flex justify-center items-start mb-5">
                 <span className="text-8xl">
