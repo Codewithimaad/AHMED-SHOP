@@ -100,7 +100,7 @@ const Navbar = () => {
                 {
                     token ? (
                         <Link to="/cart" className="relative">
-                            <p src={assets.cart_icon} className='text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><IoBagOutline /></p>
+                            <p className='text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><IoBagOutline /></p>
                             <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded full text-[8px]">
                                 {getCartCount()}
                             </p>
