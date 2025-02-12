@@ -153,4 +153,21 @@ const updateStatus = async (req, res) => {
 }
 
 
-export { placedOrderCOD, placedOrderStripe, placedOrderRazorpay, allOrders, userOrders, updateStatus }
+// Cancel Order 
+const cancelOrder = async (req, res) => {
+
+    try {
+
+        const { orderId } = req.body;
+
+        await orderModel.findByIdAndDelete(orderId);
+        res.json({ success: true, message: 'Order Cancel Successfully' });
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+}
+
+
+export { placedOrderCOD, placedOrderStripe, placedOrderRazorpay, allOrders, userOrders, updateStatus, cancelOrder }

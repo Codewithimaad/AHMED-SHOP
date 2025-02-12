@@ -1,13 +1,12 @@
 import Title from '../components/Title'
-import { assets } from '../assets/frontend_assets/assets'
 import { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import CartTotal from '../components/CartTotal'
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom'
-import { FaArrowRight } from "react-icons/fa";
 import DeliveryNote from '../components/DeliveryNote'
 import { BsCartX } from "react-icons/bs";
+import { toast } from 'react-toastify';
 
 
 
@@ -94,7 +93,10 @@ const Cart = () => {
 
                                 {/* Delete Item */}
                                 <p
-                                    onClick={() => updateQuantity(item._id, item.size, 0)}
+                                    onClick={() => {
+                                        updateQuantity(item._id, item.size, 0);
+                                        toast.success('Item removed from cart!')
+                                    }}
                                     className="text-2xl mr-4 cursor-pointer transition-all ease-in-out hover:text-blue-500"
                                 >
                                     <AiFillDelete />

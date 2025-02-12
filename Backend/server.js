@@ -8,6 +8,7 @@ import productRouter from "./routes/productRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
+
 dotenv.config();
 
 
@@ -23,9 +24,11 @@ console.log(process.env.FRONTEND_URL);
 
 
 // CORS Middleware Configuration
+const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL].filter(Boolean); // Remove undefined values
+
 const corsOptions = {
-    origin: process.env.FRONTEND_URL, // Allow only this frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    origin: allowedOrigins,  // Pass an array of allowed origins
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Allow cookies if needed
 };
 

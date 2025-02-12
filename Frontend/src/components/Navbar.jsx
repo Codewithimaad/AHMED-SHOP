@@ -6,6 +6,8 @@ import { ShopContext } from '../context/ShopContext';
 import { toast } from 'react-toastify';
 import { FaUser } from "react-icons/fa";
 import { IoSearch, IoBagOutline } from "react-icons/io5";
+import { PiHandbagSimple } from "react-icons/pi";
+
 
 
 
@@ -66,7 +68,7 @@ const Navbar = () => {
             </div>
 
             <div className='flex items-center gap-6'>
-                <p onClick={() => setShowSearch(true)} className='text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><IoSearch /></p>
+                <p onClick={() => setShowSearch(true)} className='text-lg sm:text-3xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><IoSearch /></p>
                 <div className='group relative'>
                     <p
                         onClick={() => token ? null : navigate('/login')}
@@ -87,9 +89,8 @@ const Navbar = () => {
                     {token &&
                         <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                             <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
-                                <p className='cursor-pointer hover:text-black'>My Profile</p>
-                                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-black'>Orders</p>
-                                <p onClick={logOut} className='cursor-pointer hover:text-black'>Logout</p>
+                                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-black'>My Orders</p>
+                                <p onClick={logOut} className='cursor-pointer hover:text-red-600'>Logout</p>
                             </div>
                         </div>
                     }
@@ -100,7 +101,8 @@ const Navbar = () => {
                 {
                     token ? (
                         <Link to="/cart" className="relative">
-                            <p className='text-lg sm:text-2xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><IoBagOutline /></p>
+                            <p className='text-lg sm:text-3xl font-bold cursor-pointer transition-all ease-in-out hover:text-blue-600'><PiHandbagSimple />
+                            </p>
                             <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded full text-[8px]">
                                 {getCartCount()}
                             </p>
