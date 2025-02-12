@@ -24,11 +24,9 @@ console.log(process.env.FRONTEND_URL);
 
 
 // CORS Middleware Configuration
-const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL].filter(Boolean); // Remove undefined values
-
 const corsOptions = {
-    origin: allowedOrigins,  // Pass an array of allowed origins
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "*", // Allow all
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
     credentials: true, // Allow cookies if needed
 };
 
